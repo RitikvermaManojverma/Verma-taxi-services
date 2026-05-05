@@ -547,37 +547,24 @@ footer p{font-size:0.78rem;color:var(--muted);}
       var msg     = document.getElementById('f-msg').value.trim();
 
       if (!name || !phone) {
-        alert('Please enter your name and phone number.');
+        alert('Please enter your name and phone number first.');
         return;
       }
 
       var text = 
-        '🙏 *New Enquiry — Verma Taxi Services*
+        '🙏 New Enquiry - Verma Taxi Services' + '%0A%0A' +
+        '👤 Name: ' + name + '%0A' +
+        '📱 Phone: ' + phone + '%0A' +
+        '🛣️ Journey: ' + journey + '%0A' +
+        '🚗 Vehicle: ' + vehicle + '%0A' +
+        '👥 Group Size: ' + group + '%0A' +
+        '📝 Message: ' + (msg || 'No special requirements') + '%0A%0A' +
+        'Sent from vermataxiservices.online';
 
-' +
-        '👤 *Name:* ' + name + '
-' +
-        '📱 *Phone:* ' + phone + '
-' +
-        '🛣️ *Journey:* ' + journey + '
-' +
-        '🚗 *Vehicle:* ' + vehicle + '
-' +
-        '👥 *Group Size:* ' + group + '
-' +
-        '📝 *Message:* ' + (msg || 'No special requirements') + '
-
-' +
-        'Sent from vermataxiservices.online 🌐';
-
-      var encoded = encodeURIComponent(text);
-      var waUrl = 'https://api.whatsapp.com/send?phone=918171537292&text=' + encoded;
-      var win = window.open(waUrl, '_blank');
-      if (!win || win.closed || typeof win.closed == 'undefined') {
-        window.location.href = waUrl;
-      }
+      // Direct WhatsApp link - most reliable method
+      window.location.href = 'https://wa.me/918171537292?text=' + text;
     }
-    </script>
+</script>
   </div>
 </section>
 
